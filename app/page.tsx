@@ -1,69 +1,95 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import OurStory from "@/components/OurStory";
+import Gallery from "@/components/Gallery";
+import LittleThings from "@/components/LittleThings";
+import LoveNotes from "@/components/LoveNotes";
+import BirthdaySection from "@/components/BirthdaySection";
+import Milestones from "@/components/Milestones";
+import Footer from "@/components/Footer";
+import CursorHearts, { HeartItem } from "@/components/CursorHearts";
+import Preloader from "@/components/Preloader";
 
 export default function Home() {
+  const [hearts, setHearts] = useState<HeartItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isLoading]);
+
+  const handleSendHeart = useCallback(() => {
+    const windowWidth = typeof window !== "undefined" ? window.innerWidth : 800;
+    const windowHeight = typeof window !== "undefined" ? window.innerHeight : 600;
+
+    const newHearts: HeartItem[] = Array.from({ length: 5 }).map((_, i) => ({
+      id: Date.now() + i + Math.random(),
+      x: Math.random() * (windowWidth - 80) + 40,
+      y: windowHeight - 100 - Math.random() * 50,
+      size: Math.floor(Math.random() * 16) + 16,
+      color: ["#ff2b42", "#e63946", "#8b0000", "#d62828"][Math.floor(Math.random() * 4)],
+    }));
+
+    setHearts((prev) => [...prev, ...newHearts]);
+
+    setTimeout(() => {
+      setHearts((prev) => prev.filter((h) => !newHearts.find((nh) => nh.id === h.id)));
+    }, 2600);
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="relative min-h-screen bg-[#050505] text-[#f5f5f5] selection:bg-[#ff2b42]/30 selection:text-[#ff2b42]">
+      {/* Typography Preloader with Curved Exit */}
+      <Preloader onComplete={() => setIsLoading(false)} />
+
+      {/* Floating Hearts Overlay */}
+      <CursorHearts hearts={hearts} />
+
+      {/* Header Navigation */}
+      <Navbar onSendHeart={handleSendHeart} />
+
+      {/* Smooth Content Fade-In Container */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+        animate={{
+          opacity: isLoading ? 0 : 1,
+          scale: isLoading ? 0.98 : 1,
+          filter: isLoading ? "blur(4px)" : "blur(0px)",
+        }}
+        transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
+      >
+        {/* 1. Hero Section */}
+        <Hero />
+
+        {/* 2. Our Story Section */}
+        <OurStory />
+
+        {/* 3. August 8th Birthday Countdown & Celebration Section */}
+        <BirthdaySection />
+
+        {/* 4. Photo Gallery Parallax Section */}
+        <Gallery />
+
+        {/* 5. Little Things I Love Section */}
+        <LittleThings />
+
+        {/* 6. Love Notes Section */}
+        <LoveNotes />
+
+        {/* 7. Milestones & Days Counter */}
+        <Milestones />
+
+        {/* 8. Closing Section & Signature */}
+        <Footer onSendHeart={handleSendHeart} />
+      </motion.div>
+    </main>
   );
 }

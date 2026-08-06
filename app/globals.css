@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-dark: #050505;
+  --bg-card: #0d0d0d;
+  --bg-card-hover: #141414;
+  --text-main: #f5f5f5;
+  --text-muted: #a3a3a3;
+  
+  --red-accent: #ff2b42;
+  --red-crimson: #e63946;
+  --red-dark: #8b0000;
+  --red-glow: rgba(255, 43, 66, 0.25);
+  --border-dark: #222222;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-serif {
+  font-family: var(--font-inria-serif), 'Inria Serif', Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.font-sans {
+  font-family: var(--font-inria-sans), 'Inria Sans', system-ui, sans-serif;
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting), 'Caveat', cursive;
+}
+
+/* Custom dark red scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff2b42;
+}
+
+/* Red ambient glow utility */
+.red-glow {
+  box-shadow: 0 0 35px -5px rgba(255, 43, 66, 0.3);
+}
+
+.red-glow-hover:hover {
+  box-shadow: 0 0 45px 0px rgba(255, 43, 66, 0.45);
+}
+
+/* Smooth background grid for dark theme */
+.bg-dark-grid {
+  background-image: radial-gradient(rgba(255, 43, 66, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@keyframes heartFloatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.8) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-130px) scale(1.5) rotate(20deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-heart-float {
+  animation: heartFloatUp 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-red-pulse {
+  animation: subtlePulse 5s ease-in-out infinite;
 }
