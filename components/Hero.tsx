@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-6 overflow-hidden bg-[#050505]"
+      className="relative min-h-screen flex flex-col items-center justify-start pt-36 sm:pt-44 pb-24 px-6 overflow-hidden bg-[#050505]"
     >
       {/* Subtle Background Image (her-5.jpeg) covering full section */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">

@@ -19,10 +19,19 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Disable automatic browser scroll restoration on refresh/load
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0);
     } else {
       document.body.style.overflow = "unset";
+      window.scrollTo(0, 0);
     }
   }, [isLoading]);
 
