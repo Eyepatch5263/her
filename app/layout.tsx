@@ -23,7 +23,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "For Her — A Digital Love Letter",
+  title: "For Dee — A Digital Love Letter",
   description: "A minimal, dark & romantic digital love letter dedicated to her.",
 };
 

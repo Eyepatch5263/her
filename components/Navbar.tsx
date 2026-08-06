@@ -78,7 +78,7 @@ export default function Navbar({ onSendHeart }: NavbarProps) {
           className="flex items-center gap-2 font-serif text-xl tracking-wide text-[#f5f5f5] hover:opacity-80 transition-opacity"
         >
           <span className="font-handwriting text-2xl text-[#ff2b42]">for</span>
-          <span className="font-serif italic font-semibold">her</span>
+          <span className="font-serif italic font-semibold">Dee</span>
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#ff2b42] animate-pulse"></span>
         </a>
 
