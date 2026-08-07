@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import OurStory from "@/components/OurStory";
 import Gallery from "@/components/Gallery";
+import FeaturedVideos from "@/components/FeaturedVideos";
 import LittleThings from "@/components/LittleThings";
 import LoveNotes from "@/components/LoveNotes";
 import BirthdaySection from "@/components/BirthdaySection";
@@ -87,16 +88,19 @@ export default function Home() {
         {/* 4. Photo Gallery Parallax Section */}
         <Gallery />
 
-        {/* 5. Little Things I Love Section */}
+        {/* 5. Featured Motion Reels & Video Section */}
+        <FeaturedVideos />
+
+        {/* 6. Little Things I Love Section */}
         <LittleThings />
 
-        {/* 6. Love Notes Section */}
+        {/* 7. Love Notes Section */}
         <LoveNotes />
 
-        {/* 7. Milestones & Days Counter */}
+        {/* 8. Milestones & Days Counter */}
         <Milestones />
 
-        {/* 8. Closing Section & Signature */}
+        {/* 9. Closing Section & Signature */}
         <Footer onSendHeart={handleSendHeart} />
       </motion.div>
     </main>

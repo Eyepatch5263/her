@@ -27,6 +27,16 @@ const allPhotos: GalleryItem[] = [
   { id: "g18", src: "/her-18.jpeg", title: "Shadow & Light", caption: "Intimate and quiet.", category: "Portraits" },
   { id: "g19", src: "/her-19.jpeg", title: "Endless Page", caption: "Chapters of happiness.", category: "Moments" },
   { id: "g20", src: "/her-20.jpeg", title: "Always Her", caption: "My favorite person in existence.", category: "Portraits" },
+  { id: "g21", src: "/her-21.jpeg", title: "Quiet Magic", caption: "Simple days made special.", category: "Moments" },
+  { id: "g22", src: "/her-22.jpeg", title: "Golden Glow", caption: "Warm light on a beautiful day.", category: "Portraits" },
+  { id: "g23", src: "/her-23.jpeg", title: "Forever Favorite", caption: "My heart's safe space.", category: "Portraits" },
+  { id: "g24", src: "/her-24.jpeg", title: "Sweet Serenity", caption: "Peaceful quiet moments.", category: "Candids" },
+  { id: "g25", src: "/her-25.jpeg", title: "Pure Warmth", caption: "Your smile lights up the room.", category: "Portraits" },
+  { id: "g26", src: "/her-26.jpeg", title: "Unforgettable", caption: "Every moment with you.", category: "Moments" },
+  { id: "g27", src: "/her-27.jpeg", title: "Radiant Grace", caption: "Precious and beautiful.", category: "Candids" },
+  { id: "g28", src: "/her-28.jpeg", title: "Deep Connection", caption: "Bound together forever.", category: "Moments" },
+  { id: "g29", src: "/her-29.jpeg", title: "My Everything", caption: "You, in all your glory.", category: "Portraits" },
+  { id: "g30", src: "/her-30.jpeg", title: "Timeless Love", caption: "Beyond words and pages.", category: "Candids" },
 ];
 
 export default function Gallery() {
@@ -70,10 +80,10 @@ export default function Gallery() {
     };
   }, []);
 
-  const col1 = [allPhotos[0], allPhotos[1], allPhotos[2], allPhotos[3], allPhotos[4]];
-  const col2 = [allPhotos[5], allPhotos[6], allPhotos[7], allPhotos[8], allPhotos[9]];
-  const col3 = [allPhotos[10], allPhotos[11], allPhotos[12], allPhotos[13], allPhotos[14]];
-  const col4 = [allPhotos[15], allPhotos[16], allPhotos[17], allPhotos[18], allPhotos[19]];
+  const col1 = allPhotos.slice(0, 8);
+  const col2 = allPhotos.slice(8, 16);
+  const col3 = allPhotos.slice(16, 23);
+  const col4 = allPhotos.slice(23, 30);
 
   return (
     <section id="gallery" className="relative w-full bg-[#050505] text-[#f5f5f5] border-t border-[#1a1a1a]">
@@ -118,7 +128,7 @@ export default function Gallery() {
       {/* Skiper30 Multi-Column Parallax Gallery Container */}
       <div
         ref={galleryRef}
-        className="relative box-border flex h-[200vh] sm:h-[220vh] gap-[2vw] overflow-hidden bg-[#050505] p-[2vw] border-y border-[#1a1a1a]"
+        className="relative box-border flex h-[260vh] sm:h-[300vh] gap-[2vw] overflow-hidden bg-[#050505] p-[2vw] border-y border-[#1a1a1a]"
       >
         <Column items={col1} y={y} onSelect={(item) => setLightboxIndex(allPhotos.findIndex((p) => p.id === item.id))} />
         <Column items={col2} y={y2} onSelect={(item) => setLightboxIndex(allPhotos.findIndex((p) => p.id === item.id))} />

@@ -37,6 +37,9 @@ export default function RootLayout({
       lang="en"
       className={`${inriaSerif.variable} ${inriaSans.variable} ${caveat.variable} dark`}
     >
+      <head>
+        <link rel="preload" href="/her.mpeg" as="audio" />
+      </head>
       <body className="min-h-screen bg-[#050505] text-[#f5f5f5] font-sans antialiased selection:bg-[#ff2b42]/30 selection:text-[#ff2b42]">
         {children}
       </body>
