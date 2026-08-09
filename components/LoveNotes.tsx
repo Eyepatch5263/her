@@ -52,7 +52,7 @@ export default function LoveNotes() {
       if (saved) {
         setNotes([...defaultNotes, ...JSON.parse(saved)]);
       }
-    } catch {}
+    } catch { }
   }, []);
 
   const activeNote = notes.find((n) => n.id === activeNoteId) || notes[0];
@@ -80,7 +80,7 @@ export default function LoveNotes() {
     try {
       const customOnly = updated.filter((n) => n.isCustom);
       localStorage.setItem("her_love_notes", JSON.stringify(customOnly));
-    } catch {}
+    } catch { }
   };
 
   return (
@@ -133,11 +133,10 @@ export default function LoveNotes() {
                 setActiveNoteId(note.id);
                 setIsAdding(false);
               }}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                activeNoteId === note.id && !isAdding
+              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all ${activeNoteId === note.id && !isAdding
                   ? "bg-[#ff2b42] text-white shadow-[0_0_20px_rgba(255,43,66,0.4)]"
                   : "bg-[#121212] text-[#a3a3a3] hover:bg-[#1a1a1a] hover:text-white border border-[#222]"
-              }`}
+                }`}
             >
               {note.title}
             </button>

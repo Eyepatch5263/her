@@ -49,7 +49,7 @@ export default function Footer({ onSendHeart }: FooterProps) {
             Forever & Always, Yours
           </span>
           <span className="text-[11px] uppercase tracking-[0.25em] text-[#737373]">
-            With endless love 
+            With endless love
           </span>
         </motion.div>
 

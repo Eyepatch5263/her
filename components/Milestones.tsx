@@ -31,9 +31,9 @@ export default function Milestones() {
       subtext: "Waiting to be written together",
     },
     {
-      number: "1",
-      label: "Upcoming Birthday",
-      subtext: "August 8th — Her special day!",
+      number: "4",
+      label: "Days Meetup",
+      subtext: "August 20–24 — Our next reunion!",
     },
   ];
 

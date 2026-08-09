@@ -51,15 +51,12 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
   }, [index, onComplete]);
 
   // Smooth Dennis Snellenberg style curved SVG path
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height + 400} 0 ${
-    dimension.height
-  } Z`;
+  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height
+    } Q${dimension.width / 2} ${dimension.height + 400} 0 ${dimension.height
+    } Z`;
 
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} 0 Q${
-    dimension.width / 2
-  } 0 0 0 Z`;
+  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} 0 Q${dimension.width / 2
+    } 0 0 0 Z`;
 
   const curveVariants = {
     initial: {

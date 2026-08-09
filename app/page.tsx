@@ -10,6 +10,7 @@ import FeaturedVideos from "@/components/FeaturedVideos";
 import LittleThings from "@/components/LittleThings";
 import LoveNotes from "@/components/LoveNotes";
 import BirthdaySection from "@/components/BirthdaySection";
+import MeetupSection from "@/components/MeetupSection";
 import Milestones from "@/components/Milestones";
 import Footer from "@/components/Footer";
 import CursorHearts, { HeartItem } from "@/components/CursorHearts";
@@ -82,8 +83,11 @@ export default function Home() {
         {/* 2. Our Story Section */}
         <OurStory />
 
-        {/* 3. August 8th Birthday Countdown & Celebration Section */}
-        <BirthdaySection />
+        {/* 3. August 8th Birthday Memories & Celebration Section */}
+        {/* <BirthdaySection /> */}
+
+        {/* 4. August 20–24 Meetup Countdown & Reunion Section */}
+        <MeetupSection />
 
         {/* 4. Photo Gallery Parallax Section */}
         <Gallery />

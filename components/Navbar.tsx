@@ -107,11 +107,10 @@ export default function Navbar({ onSendHeart }: NavbarProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? "bg-[#050505]/90 backdrop-blur-md border-b border-[#1a1a1a] py-4 shadow-xl"
           : "bg-transparent py-6"
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Brand */}
@@ -129,8 +128,11 @@ export default function Navbar({ onSendHeart }: NavbarProps) {
           <a href="#story" className="hover:text-[#ff2b42] transition-colors">
             Our Story
           </a>
-          <a href="#birthday" className="hover:text-[#ff2b42] text-[#ff2b42] transition-colors">
-            Aug 8 Birthday
+          {/* <a href="#birthday" className="hover:text-[#ff2b42] transition-colors">
+            Birthday Memories
+          </a> */}
+          <a href="#meetup" className="hover:text-[#ff2b42] text-[#ff2b42] font-semibold transition-colors">
+            Aug 20 Meetup
           </a>
           <a href="#gallery" className="hover:text-[#ff2b42] transition-colors">
             Gallery
@@ -153,11 +155,10 @@ export default function Navbar({ onSendHeart }: NavbarProps) {
             onClick={toggleMusic}
             aria-label={isPlaying ? "Mute Music" : "Play Music"}
             title={isPlaying ? "Mute Music" : "Play Music"}
-            className={`p-2.5 rounded-full border transition-all duration-300 flex items-center justify-center gap-1.5 ${
-              isPlaying
+            className={`p-2.5 rounded-full border transition-all duration-300 flex items-center justify-center gap-1.5 ${isPlaying
                 ? "bg-[#ff2b42]/15 border-[#ff2b42] text-[#ff2b42] shadow-[0_0_12px_rgba(255,43,66,0.3)]"
                 : "bg-[#121212] border-[#262626] text-[#737373] hover:text-[#f5f5f5] hover:border-[#404040]"
-            }`}
+              }`}
           >
             {isPlaying ? (
               // Animated Equalizer Bars when music is playing

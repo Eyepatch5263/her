@@ -176,9 +176,8 @@ export default function OurStory() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
                   viewport={{ once: true, margin: "-40px" }}
-                  className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-12 ${
-                    isEven ? "md:flex-row-reverse" : ""
-                  }`}
+                  className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-12 ${isEven ? "md:flex-row-reverse" : ""
+                    }`}
                 >
                   {/* 3D Flip Card Container */}
                   <div className="w-full md:w-1/2 [perspective:1000px]">
