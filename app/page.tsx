@@ -47,7 +47,7 @@ export default function Home() {
       x: Math.random() * (windowWidth - 80) + 40,
       y: windowHeight - 100 - Math.random() * 50,
       size: Math.floor(Math.random() * 16) + 16,
-      color: ["#3b82f6", "#2563eb", "#1d4ed8", "#60a5fa"][Math.floor(Math.random() * 4)],
+      color: ["#ff2b42", "#e63946", "#d62828", "#ff6b7a"][Math.floor(Math.random() * 4)],
     }));
 
     setHearts((prev) => [...prev, ...newHearts]);
@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <ExcitementProvider>
-      <main className="relative min-h-screen bg-[#050505] text-[#f5f5f5] selection:bg-[#3b82f6]/30 selection:text-[#3b82f6]">
+      <main className="relative min-h-screen bg-[#050505] text-[#f5f5f5] selection:bg-[#ff2b42]/30 selection:text-[#ff2b42]">
         {/* Typography Preloader with Curved Exit */}
         <Preloader onComplete={() => setIsLoading(false)} />
 

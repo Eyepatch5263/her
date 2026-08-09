@@ -23,8 +23,13 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "For Dee — A Digital Love Letter",
-  description: "A minimal, dark & romantic digital love letter dedicated to her.",
+  title: "For Dee — A Digital Love Space",
+  description: "A minimal, dark & romantic digital love space dedicated to her.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -38,6 +43,8 @@ export default function RootLayout({
       className={`${inriaSerif.variable} ${inriaSans.variable} ${caveat.variable} dark`}
     >
       <head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="preload" href="/her.mpeg" as="audio" />
       </head>
       <body className="min-h-screen bg-[#050505] text-[#f5f5f5] font-sans antialiased selection:bg-[#ff2b42]/30 selection:text-[#ff2b42]">
