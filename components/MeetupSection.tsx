@@ -133,9 +133,8 @@ export default function MeetupSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ff2b42]/10 border border-[#ff2b42]/30 text-[#ff2b42] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[#ff2b42] text-xs font-semibold uppercase tracking-[0.2em]"
           >
-            <Sparkles className="w-3.5 h-3.5" />
             <span>Next Big Milestone • 4 Magical Days</span>
           </motion.div>
 
