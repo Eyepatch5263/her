@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { Calendar, Clock, MapPin, Heart, Sparkles, Compass, Moon, Smile } from "lucide-react";
+import { useExcitement } from "@/context/ExcitementContext";
 
 export default function MeetupSection() {
+  const { excitementCount, incrementExcitement } = useExcitement();
+
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
     hours: number;
@@ -20,12 +23,11 @@ export default function MeetupSection() {
     isMeetupTime: false,
   });
 
-  const [excitementCount, setExcitementCount] = useState<number>(0);
   const [activeDayIndex, setActiveDayIndex] = useState<number>(0);
 
   useEffect(() => {
     // Target date: August 20, 2026 00:00:00
-    const targetDate = new Date("2026-08-20T00:00:00");
+    const targetDate = new Date("2026-08-21T00:00:00");
 
     const updateTimer = () => {
       const now = new Date();
@@ -61,7 +63,9 @@ export default function MeetupSection() {
   }, []);
 
   const triggerMeetupHearts = () => {
-    setExcitementCount((prev) => prev + 1);
+    // Increment global context count synced real-time across all visitors
+    incrementExcitement();
+
     confetti({
       particleCount: 80,
       spread: 90,
@@ -75,7 +79,7 @@ export default function MeetupSection() {
   const daysPlan = [
     {
       day: "Day 1",
-      date: "August 20",
+      date: "August 21",
       title: "The Warmest Reunion",
       tagline: "The Moment We Meet Again",
       description: "The long countdown comes to an end. Stepping into the same space, running into each other's arms, and holding tight like time stood still.",
@@ -111,7 +115,7 @@ export default function MeetupSection() {
       description: "Making the final hours count. Swapping keepsake gifts, promising our next meetup, and holding on to memories that will keep our hearts full till we meet again.",
       icon: Smile,
       color: "from-[#d62828]/20 to-[#ff2b42]/5",
-      highlights: ["Going to movies", "Visitng Book Cafe", "Exploring the city"],
+      highlights: ["Going to movies", "Visiting Book Cafe", "Exploring the city"],
     },
   ];
 
@@ -124,6 +128,17 @@ export default function MeetupSection() {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ff2b42]/10 border border-[#ff2b42]/30 text-[#ff2b42] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Next Big Milestone • 4 Magical Days</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -169,17 +184,12 @@ export default function MeetupSection() {
                 </div>
                 <div>
                   <h3 className="font-serif text-xl sm:text-2xl text-[#f5f5f5] font-medium">
-                    August 20 – 24, 2026
+                    August 21 – 24, 2026
                   </h3>
                   <p className="text-xs text-[#737373] tracking-wide">
                     4 Days Reunion • Counting down to Day 1
                   </p>
                 </div>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-mono text-[#a3a3a3] bg-[#141414] px-4 py-2 rounded-full border border-[#262626]">
-                <Clock className="w-4 h-4 text-[#ff2b42] animate-pulse" />
-                <span>{timeLeft.isMeetupTime ? "IT'S MEETUP TIME!" : "COUNTDOWN LIVE"}</span>
               </div>
             </div>
 
@@ -207,10 +217,10 @@ export default function MeetupSection() {
               ))}
             </div>
 
-            {/* Countdown Action & Excitement Counter */}
+            {/* Countdown Action & Global Excitement Counter */}
             <div className="mt-8 pt-6 border-t border-[#1f1f1f] flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-xs text-[#a3a3a3] font-light text-center sm:text-left">
-                Cannot wait? Tap the button to send excitement sparks for Aug 20!
+                Cannot wait? Tap the button to send live excitement sparks for Aug 21!
               </p>
 
               <button
@@ -245,10 +255,11 @@ export default function MeetupSection() {
                   key={idx}
                   onClick={() => setActiveDayIndex(idx)}
                   whileHover={{ y: -4 }}
-                  className={`cursor-pointer rounded-2xl p-6 border transition-all duration-300 relative overflow-hidden flex flex-col justify-between ${isActive
+                  className={`cursor-pointer rounded-2xl p-6 border transition-all duration-300 relative overflow-hidden flex flex-col justify-between ${
+                    isActive
                       ? "bg-[#141414] border-[#ff2b42] shadow-[0_0_25px_rgba(255,43,66,0.2)]"
                       : "bg-[#0d0d0d] border-[#222] hover:border-[#404040]"
-                    }`}
+                  }`}
                 >
                   <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl ${plan.color} rounded-bl-full pointer-events-none`} />
 
