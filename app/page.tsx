@@ -10,7 +10,7 @@ import FeaturedVideos from "@/components/FeaturedVideos";
 import LittleThings from "@/components/LittleThings";
 import LoveNotes from "@/components/LoveNotes";
 import BirthdaySection from "@/components/BirthdaySection";
-import MeetupSection from "@/components/MeetupSection";
+// import MeetupSection from "@/components/MeetupSection";
 import Milestones from "@/components/Milestones";
 import Footer from "@/components/Footer";
 import CursorHearts, { HeartItem } from "@/components/CursorHearts";
@@ -89,7 +89,7 @@ export default function Home() {
           {/* <BirthdaySection /> */}
 
           {/* 4. August 20–24 Meetup Countdown & Reunion Section */}
-          <MeetupSection />
+          {/* <MeetupSection /> */}
 
           {/* 5. Photo Gallery Parallax Section */}
           <Gallery />
